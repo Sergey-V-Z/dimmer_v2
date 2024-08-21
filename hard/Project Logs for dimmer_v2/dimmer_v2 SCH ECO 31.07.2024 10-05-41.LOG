@@ -1,0 +1,5 @@
+Change Value of Parameter Package in Part C9 Old=0603 New=1206
+Change Value of Parameter Package in Part C10 Old=0603 New=1206
+Change Value of Parameter Package in Part D2 Old=None New=
+Added Parameter Package=B32521C6103J000 to Part C12
+Added Parameter Package=B32521C6103J000 to Part C13

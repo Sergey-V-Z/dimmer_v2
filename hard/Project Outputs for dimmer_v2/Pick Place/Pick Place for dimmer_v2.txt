@@ -1,0 +1,57 @@
+Altium Designer Pick and Place Locations
+D:\Radio\Jobe\dimmer_v2\hard\Project Outputs for dimmer_v2\Pick Place\Pick Place for dimmer_v2.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       31.07.24
+Time:       10:08
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mm
+
+Designator Comment                 Layer    Center-X(mm) Center-Y(mm) Rotation Description                                                                                                          
+C11        "0402 0.1 uF"           TopLayer 10.4375mm    54.7250mm    180      "Ceramic Capacitor"                                                                                                  
+C10        "1206  4.7uF 16v"       TopLayer 14.4250mm    62.7250mm    90       "Ceramic Capacitor"                                                                                                  
+C9         "1206  4.7uF 16v"       TopLayer 25.5750mm    64.6750mm    270      "Ceramic Capacitor"                                                                                                  
+C5         "0402 0.1 uF"           TopLayer 26.7750mm    58.3375mm    90       "Ceramic Capacitor"                                                                                                  
+C2         "0402 2.2uF"            TopLayer 22.9500mm    43.1375mm    90       "Ceramic Capacitor SMD"                                                                                              
+C1         "0402 2.2uF"            TopLayer 10.5375mm    48.9750mm    0        "Ceramic Capacitor SMD"                                                                                              
+H1         Hole                    TopLayer 29.9500mm    4.9750mm     0        ""                                                                                                                   
+PS1        K7805-500R3             TopLayer 6.3500mm     62.5250mm    180      "Linear Regulator Replacement DC DC Converter 1 Output 5V, -5V - - - 500mA, 300mA 6.5V, 7V - 36V, 31V Input"         
+X2         "PLS-5 2.54"            TopLayer 30.9250mm    61.7100mm    90       "Header, 5-Pin"                                                                                                      
+X1         "PLS-5 2.54"            TopLayer 1.9500mm     50.1050mm    270      "Header, 5-Pin"                                                                                                      
+VR1        LM1117MPX-3.3           TopLayer 19.7000mm    64.0500mm    90       "800-mA 3.3-V linear voltage regulator"                                                                              
+VD2        "0805 G"                TopLayer 29.0250mm    45.4750mm    90       Green                                                                                                                
+VD1        "0805 G"                TopLayer 30.6500mm    45.4500mm    90       Green                                                                                                                
+U2         MOC3023                 TopLayer 5.7000mm     38.5500mm    270      "Optoisolator Triac Output 5300Vrms 1 Channel 6-DIP"                                                                 
+U1         STM32F405RGT6           TopLayer 19.3000mm    51.3500mm    270      "High-performance foundation line, ARM Cortex-M4 core with DSP and FPU, 1 Mbyte Flash, 168 MHz CPU, ART Accelerator" 
+R14        "0402 10K"              TopLayer 11.0500mm    45.8500mm    180      Resistor                                                                                                             
+R12        "0402 430 R"            TopLayer 8.2250mm     45.3000mm    90       Resistor                                                                                                             
+R15        "75 kOm 0.5w 5%"        TopLayer 28.7750mm    33.6250mm    270      Резистор                                                                                                             
+R13        "75 kOm 0.5w 5%"        TopLayer 19.8250mm    33.0250mm    360      Резистор                                                                                                             
+R11        "47 R 0.5w 5%"          TopLayer 7.6250mm     18.1500mm    180      Резистор                                                                                                             
+R10        "680 R 0.5w 5%"         TopLayer 29.5500mm    20.0500mm    90       Резистор                                                                                                             
+R9         "200 R 0.5w 5%"         TopLayer 19.4250mm    24.0000mm    270      Резистор                                                                                                             
+R8         "0402 3K"               TopLayer 27.3000mm    44.6000mm    90       Resistor                                                                                                             
+R7         "0402 3K"               TopLayer 30.3000mm    42.7000mm    360      Resistor                                                                                                             
+R6         "0402 10K"              TopLayer 18.9250mm    58.8750mm    180      Resistor                                                                                                             
+R3         "0402 10 R"             TopLayer 20.7000mm    70.4750mm    270      Resistor                                                                                                             
+R2         "0402 10K"              TopLayer 30.8000mm    53.1500mm    360      Resistor                                                                                                             
+R1         "0402 10 R"             TopLayer 19.1500mm    70.4750mm    270      Resistor                                                                                                             
+Q1         BTA06-600BRG            TopLayer 6.3250mm     25.3250mm    180      "TRIAC Standard 600V 6A Through Hole TO-220AB"                                                                       
+OK1        PC814                   TopLayer 13.7250mm    38.6500mm    0        "#10-32 Round Head Machine Screw Slotted Drive Nylon"                                                                
+J5         KLS2-128I-5.00-02P-4S   TopLayer 6.2000mm     81.2500mm    0        "2~24 Poles, Screw Type, Horizontal, 5.0 Pitch, 26~14 _AWG_, Terminal Block Connector"                               
+J4         KLS2-128I-5.00-02P-4S   TopLayer 16.1750mm    5.6500mm     180      "2~24 Poles, Screw Type, Horizontal, 5.0 Pitch, 26~14 _AWG_, Terminal Block Connector"                               
+J3         KLS2-128I-5.00-02P-4S   TopLayer 6.2000mm     5.6500mm     180      "2~24 Poles, Screw Type, Horizontal, 5.0 Pitch, 26~14 _AWG_, Terminal Block Connector"                               
+J2         KLS2-128I-5.00-02P-4S   TopLayer 26.2000mm    81.2500mm    0        "2~24 Poles, Screw Type, Horizontal, 5.0 Pitch, 26~14 _AWG_, Terminal Block Connector"                               
+J1         KLS2-128I-5.00-02P-4S   TopLayer 16.2000mm    81.2500mm    0        "2~24 Poles, Screw Type, Horizontal, 5.0 Pitch, 26~14 _AWG_, Terminal Block Connector"                               
+D4         MBRS540T3G              TopLayer 6.1750mm     68.9250mm    180      "Diode Schottky 40V 5A Surface Mount SMC"                                                                            
+D2         SMAJ36CA                TopLayer 27.9250mm    70.2500mm    360      ""                                                                                                                   
+C13        "0.047 B32520C6473J000" TopLayer 24.5250mm    21.4500mm    270      ""                                                                                                                   
+C12        "0.01 B32521C6103J000"  TopLayer 14.1250mm    21.4500mm    270      ""                                                                                                                   
+C7         "0402 0.1 uF"           TopLayer 24.6125mm    58.9250mm    360      "Ceramic Capacitor"                                                                                                  
+C6         "0402 0.1 uF"           TopLayer 13.8625mm    58.9000mm    180      "Ceramic Capacitor"                                                                                                  
+C8         "0402 0.1 uF"           TopLayer 30.7625mm    54.5250mm    180      "Ceramic Capacitor"                                                                                                  
+C4         "0402 0.1 uF"           TopLayer 24.4500mm    43.1625mm    270      "Ceramic Capacitor"                                                                                                  
+C3         "0402 0.1 uF"           TopLayer 10.5625mm    47.5750mm    180      "Ceramic Capacitor"                                                                                                  

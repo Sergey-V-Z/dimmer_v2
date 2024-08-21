@@ -1,0 +1,22 @@
+Removed Pin From Net: NetName=GND Pin=D1-2
+Removed Pin From Net: NetName=GND Pin=D3-2
+Removed Pin From Net: NetName=RX Pin=R4-2
+Removed Pin From Net: NetName=RX Pin=R5-2
+Removed Member From Class: ClassName=dimmer_v2 Member=D1
+Removed Member From Class: ClassName=dimmer_v2 Member=D3
+Removed Member From Class: ClassName=dimmer_v2 Member=R4
+Removed Member From Class: ClassName=dimmer_v2 Member=R5
+Added Pin To Net: NetName=NetD2_1 Pin=J2-1
+Added Pin To Net: NetName=RX Pin=R3-2
+Added Pin To Net: NetName=RX Pin=U1-42
+Added Pin To Net: NetName=NetJ1_1 Pin=J1-1
+Added Pin To Net: NetName=NetJ1_1 Pin=R1-1
+Added Net: Name=NetJ1_1
+Added Member To Class: ClassName=dimmer_v2 Member=Component C1 0402 2.2uF
+Added Member To Class: ClassName=dimmer_v2 Member=Component C2 0402 2.2uF
+Added Member To Class: ClassName=dimmer_v2 Member=Component C3 0402 0.1 uF
+Added Member To Class: ClassName=dimmer_v2 Member=Component C4 0402 0.1 uF
+Added Member To Class: ClassName=dimmer_v2 Member=Component C9 1206  4.7uF 16v
+Added Member To Class: ClassName=dimmer_v2 Member=Component C10 1206  4.7uF 16v
+Added Member To Class: ClassName=dimmer_v2 Member=Component R12 0402 430 R
+Added Member To Class: ClassName=dimmer_v2 Member=Component R14 0402 10K

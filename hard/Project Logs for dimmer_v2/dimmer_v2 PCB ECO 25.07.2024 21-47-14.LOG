@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=Zc_INT Pin=U1-25
+Change Component Comment : Designator=C12 Old Comment=0.01 CAPRR1000W60L1300T400H900 New Comment=0.01 B32521C6103J000
+Change Component Comment : Designator=C13 Old Comment=0.047 CAPRR1000W60L1300T400H900 New Comment=0.047 B32520C6473J000
+Change component parameters: Designator = "C12" ("C12"); Footprint = "CAPRR1000W60L1300T400H900"; UniqueID = "\HVGVFYDC" ("\HVGVFYDC")
+Change component parameters (AddParameter): Name = "value"; Value = "0.01 B32521C6103J000"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C13" ("C13"); Footprint = "CAPRR1000W60L1300T400H900"; UniqueID = "\XKTBLNRT" ("\XKTBLNRT")
+Change component parameters (AddParameter): Name = "value"; Value = "0.047 B32520C6473J000"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Zc_INT Pin=U1-33
