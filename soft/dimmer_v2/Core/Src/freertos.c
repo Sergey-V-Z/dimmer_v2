@@ -40,7 +40,7 @@ extern TIM_HandleTypeDef htim14;
 extern UART_HandleTypeDef huart1;
 
 float Temp[MAXDEVICES_ON_THE_BUS];
-
+float current_temp;
 extern trmo_settings termo_set;
 /* USER CODE END PTD */
 
@@ -213,7 +213,7 @@ void mainTask(void const * argument)
 		  DS18B20_SampleTemp();               // Convert (Sample) Temperature Now
 		  osDelay(300);
 		  Temp[0] = DS18B20_ReadTemp();  // Read The Conversion Result Temperature Value
-
+		  current_temp = Temp[0];
 		if (Temp[0] < termo_set.setTEMP) {
 			//Temperature = 0;
 			delay_dimm_us = 11000;
@@ -366,10 +366,10 @@ void actoin_resp_status() {
 	cJSON_AddStringToObject(j_to_host, "name_device", NAME);
 	cJSON_AddNumberToObject(j_to_host, "type_data", 4);
 
-	cJSON_AddNumberToObject(j_all_settings_obj, "set_temp", termo_set.setTEMP);
-	cJSON_AddNumberToObject(j_all_settings_obj, "max_temp", termo_set.maxTemp);
-	cJSON_AddNumberToObject(j_all_settings_obj, "step_temp", termo_set.stepTemp);
-	cJSON_AddNumberToObject(j_all_settings_obj, "current", Temp[0]);
+	cJSON_AddNumberToObject(j_all_settings_obj, "set_temp", (double)termo_set.setTEMP);
+	cJSON_AddNumberToObject(j_all_settings_obj, "max_temp", (double)termo_set.maxTemp);
+	cJSON_AddNumberToObject(j_all_settings_obj, "step_temp", (double)termo_set.stepTemp);
+	cJSON_AddNumberToObject(j_all_settings_obj, "current", (double)(current_temp));
 
 	cJSON_AddItemToObject(j_to_host, "obj", j_all_settings_obj);
 
