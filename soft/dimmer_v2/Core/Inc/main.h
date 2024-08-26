@@ -53,7 +53,7 @@ extern DMA_HandleTypeDef hdma_usart2_rx;
 #define ARRAY_LEN(x)            (sizeof(x) / sizeof((x)[0]))
 
 #define DBG_PORT huart2
-#define LOG_TX_BUF_SIZE 2048
+#define LOG_TX_BUF_SIZE 1024*8
 #define UART2_RX_LENGTH 512
 #define message_RX_LENGTH 512
 
@@ -110,6 +110,7 @@ uint16_t eeprom_write(trmo_settings ts);
 #define CTR_GPIO_Port GPIOB
 #define Zc_INT_Pin GPIO_PIN_12
 #define Zc_INT_GPIO_Port GPIOB
+#define Zc_INT_EXTI_IRQn EXTI15_10_IRQn
 #define LED_Pin GPIO_PIN_7
 #define LED_GPIO_Port GPIOC
 #define LED1_Pin GPIO_PIN_8

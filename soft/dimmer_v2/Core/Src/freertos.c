@@ -38,6 +38,8 @@ extern TIM_HandleTypeDef htim13;
 extern TIM_HandleTypeDef htim14;
 
 extern UART_HandleTypeDef huart1;
+extern  DMA_HandleTypeDef hdma_usart1_tx;
+extern DMA_HandleTypeDef hdma_usart1_rx;
 
 float Temp[MAXDEVICES_ON_THE_BUS];
 float current_temp;
@@ -51,7 +53,9 @@ extern trmo_settings termo_set;
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+#define OW_0	0x00
+#define OW_1	0xff
+#define OW_R_1	0xff
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -93,6 +97,7 @@ uint16_t Start_index = 0;
 osThreadId MainTaskHandle;
 osThreadId SettingsTaskHandle;
 osMessageQId rxDataUART2Handle;
+osMutexId IDHandle;
 osSemaphoreId eepromSemHandle;
 
 /* Private function prototypes -----------------------------------------------*/
@@ -108,7 +113,7 @@ float map(float x, float in_min, float in_max, float out_min, float out_max)
 }
 
 static uint8_t DS18B20_Init(void);
-static uint8_t DS18B20_ReadBit(void);
+//static uint8_t DS18B20_ReadBit(void);
 static uint8_t DS18B20_ReadByte(void);
 static void DS18B20_WriteByte(uint8_t);
 void DS18B20_SampleTemp(void);
@@ -146,6 +151,10 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
+  /* Create the mutex(es) */
+  /* definition and creation of ID */
+  osMutexDef(ID);
+  IDHandle = osMutexCreate(osMutex(ID));
 
   /* USER CODE BEGIN RTOS_MUTEX */
 	/* add mutexes, ... */
@@ -179,7 +188,7 @@ void MX_FREERTOS_Init(void) {
   MainTaskHandle = osThreadCreate(osThread(MainTask), NULL);
 
   /* definition and creation of SettingsTask */
-  osThreadDef(SettingsTask, settingsTask, osPriorityNormal, 0, 512);
+  osThreadDef(SettingsTask, settingsTask, osPriorityNormal, 0, 1024);
   SettingsTaskHandle = osThreadCreate(osThread(SettingsTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -211,7 +220,7 @@ void mainTask(void const * argument)
 		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 		//get_Temperature();
 		  DS18B20_SampleTemp();               // Convert (Sample) Temperature Now
-		  osDelay(300);
+		  osDelay(800);
 		  Temp[0] = DS18B20_ReadTemp();  // Read The Conversion Result Temperature Value
 		  current_temp = Temp[0];
 		if (Temp[0] < termo_set.setTEMP) {
@@ -225,7 +234,7 @@ void mainTask(void const * argument)
 			delay_dimm_us = (uint32_t) map(Temp[0], termo_set.setTEMP, termo_set.maxTemp, FAN_START, 1);
 		}
 		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-		osDelay(700);
+		osDelay(300);
 
 	}
   /* USER CODE END mainTask */
@@ -257,7 +266,7 @@ void settingsTask(void const * argument)
 		if (json != NULL) {
 
 			cJSON *id = cJSON_GetObjectItemCaseSensitive(json, "id");
-			cJSON *name_device = cJSON_GetObjectItemCaseSensitive(json, "name_device");
+			//cJSON *name_device = cJSON_GetObjectItemCaseSensitive(json, "name_device");
 			cJSON *type_data = cJSON_GetObjectItemCaseSensitive(json, "type_data");
 			cJSON *save_settings = cJSON_GetObjectItemCaseSensitive(json, "save_settings");
 			cJSON *obj = cJSON_GetObjectItemCaseSensitive(json, "obj");
@@ -313,6 +322,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 		__HAL_TIM_SET_COUNTER(&htim14, 0);
 		HAL_GPIO_WritePin(CTR_GPIO_Port, CTR_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(B1_GPIO_Port, B1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 		flag_pulse_Start = 0;
 		HAL_TIM_Base_Start_IT(&htim14); // запуск таймара на открытие симистора
 	} else {
@@ -448,6 +458,24 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 
 }
 
+//-----------------------------------------------------------------------------
+// обратное преобразование - из того, что получено через USART опять собирается байт
+// ow_bits - ссылка на буфер, размером не менее 8 байт
+//-----------------------------------------------------------------------------
+uint8_t OW_toByte(uint8_t *ow_bits) {
+	uint8_t ow_byte, i;
+	ow_byte = 0;
+	for (i = 0; i < 8; i++) {
+		ow_byte = ow_byte >> 1;
+		if (*ow_bits == OW_R_1) {
+			ow_byte |= 0x80;
+		}
+		ow_bits++;
+	}
+
+	return ow_byte;
+}
+
 static uint8_t DS18B20_Init(void)
 {
 	uint8_t ResetByte = 0xF0, PresenceByte;
@@ -467,7 +495,7 @@ static uint8_t DS18B20_Init(void)
 		return 0; // No presence pulse detected
 	}
 }
-
+/*
 static uint8_t DS18B20_ReadBit(void)
 {
     uint8_t ReadBitCMD = 0xFF;
@@ -480,11 +508,20 @@ static uint8_t DS18B20_ReadBit(void)
     RxBit = (uint8_t)(huart1.Instance->DR & (uint8_t)0x00FF);
 
     return (RxBit & 0x01);
-}
+}*/
 
 static uint8_t DS18B20_ReadByte(void)
 {
+	// Буфер для приема/передачи по 1-wire
+	uint8_t TxBuffer[8];
+	uint8_t RxBuffer[8];
+    for (int i=0; i<8; i++)
+    {
+		TxBuffer[i] = 0xFF;
+    }
+
 	uint8_t RxByte = 0;
+	/*
 	for (uint8_t i = 0; i < 8; i++)
 	{
 		RxByte >>= 1;
@@ -492,13 +529,26 @@ static uint8_t DS18B20_ReadByte(void)
 		{
 			RxByte |= 0x80;
 		}
+	}*/
+
+    HAL_UART_Receive_DMA(&huart1, RxBuffer, 8);
+    HAL_UART_Transmit(&huart1, TxBuffer, 8, 10);
+
+	while (HAL_DMA_STATE_READY != HAL_DMA_GetState(&hdma_usart1_rx)) {
+		osDelay(1);
 	}
+
+	//HAL_UART_DMAStop(&huart1);
+
+	RxByte = OW_toByte(RxBuffer);
+
 	return RxByte;
 }
 
 static void DS18B20_WriteByte(uint8_t data)
 {
 	uint8_t TxBuffer[8];
+	uint8_t RxBuffer[8];
     for (int i=0; i<8; i++)
     {
 	  if ((data & (1<<i)) != 0){
@@ -508,7 +558,15 @@ static void DS18B20_WriteByte(uint8_t data)
 		  TxBuffer[i] = 0;
 	  }
     }
+    //HAL_UART_Transmit(&huart1, TxBuffer, 8, 10);
+
+    HAL_UART_Receive_DMA(&huart1, RxBuffer, 8);
     HAL_UART_Transmit(&huart1, TxBuffer, 8, 10);
+	while (HAL_DMA_STATE_READY != HAL_DMA_GetState(&hdma_usart1_rx)) {
+		osDelay(1);
+	}
+
+	//HAL_UART_DMAStop(&huart1);
 }
 
 void DS18B20_SampleTemp(void)

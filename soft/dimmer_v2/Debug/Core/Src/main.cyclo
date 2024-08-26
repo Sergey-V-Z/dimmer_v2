@@ -4,4 +4,4 @@
 ../Core/Src/main.c:233:10:eeprom_read	3
 ../Core/Src/main.c:259:10:eeprom_write	3
 ../Core/Src/main.c:294:6:HAL_TIM_PeriodElapsedCallback	3
-../Core/Src/main.c:315:6:Error_Handler	1
+../Core/Src/main.c:316:6:Error_Handler	1
