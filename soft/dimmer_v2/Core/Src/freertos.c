@@ -379,7 +379,7 @@ void actoin_resp_status() {
 	cJSON_AddNumberToObject(j_all_settings_obj, "set_temp", (double)termo_set.setTEMP);
 	cJSON_AddNumberToObject(j_all_settings_obj, "max_temp", (double)termo_set.maxTemp);
 	cJSON_AddNumberToObject(j_all_settings_obj, "step_temp", (double)termo_set.stepTemp);
-	cJSON_AddNumberToObject(j_all_settings_obj, "current", (double)(current_temp));
+	//cJSON_AddNumberToObject(j_all_settings_obj, "current", (double)(current_temp));
 
 	cJSON_AddItemToObject(j_to_host, "obj", j_all_settings_obj);
 
