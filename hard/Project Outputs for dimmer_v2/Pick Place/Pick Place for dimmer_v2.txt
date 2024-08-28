@@ -4,15 +4,16 @@ D:\Radio\Jobe\dimmer_v2\hard\Project Outputs for dimmer_v2\Pick Place\Pick Place
 ========================================================================================================================
 File Design Information:
 
-Date:       31.07.24
-Time:       10:08
-Revision:   Not in VersionControl
+Date:       27.08.24
+Time:       20:34
+Revision:   92de68fc53036e3ea53cfce47e0b5ddc6ed7231f
 Variant:    No variations
 Units used: mm
 
 Designator Comment                 Layer    Center-X(mm) Center-Y(mm) Rotation Description                                                                                                          
+R4         "0402 10K"              TopLayer 23.4750mm    69.9000mm    90       Resistor                                                                                                             
 C11        "0402 0.1 uF"           TopLayer 10.4375mm    54.7250mm    180      "Ceramic Capacitor"                                                                                                  
-C10        "1206  4.7uF 16v"       TopLayer 14.4250mm    62.7250mm    90       "Ceramic Capacitor"                                                                                                  
+C10        "1206  4.7uF 16v"       TopLayer 14.3500mm    64.8000mm    90       "Ceramic Capacitor"                                                                                                  
 C9         "1206  4.7uF 16v"       TopLayer 25.5750mm    64.6750mm    270      "Ceramic Capacitor"                                                                                                  
 C5         "0402 0.1 uF"           TopLayer 26.7750mm    58.3375mm    90       "Ceramic Capacitor"                                                                                                  
 C2         "0402 2.2uF"            TopLayer 22.9500mm    43.1375mm    90       "Ceramic Capacitor SMD"                                                                                              
@@ -22,8 +23,8 @@ PS1        K7805-500R3             TopLayer 6.3500mm     62.5250mm    180      "
 X2         "PLS-5 2.54"            TopLayer 30.9250mm    61.7100mm    90       "Header, 5-Pin"                                                                                                      
 X1         "PLS-5 2.54"            TopLayer 1.9500mm     50.1050mm    270      "Header, 5-Pin"                                                                                                      
 VR1        LM1117MPX-3.3           TopLayer 19.7000mm    64.0500mm    90       "800-mA 3.3-V linear voltage regulator"                                                                              
-VD2        "0805 G"                TopLayer 29.0250mm    45.4750mm    90       Green                                                                                                                
-VD1        "0805 G"                TopLayer 30.6500mm    45.4500mm    90       Green                                                                                                                
+VD2        "0805 Green"            TopLayer 29.0250mm    45.4750mm    90       Green                                                                                                                
+VD1        "0805 Green"            TopLayer 30.6500mm    45.4500mm    90       Green                                                                                                                
 U2         MOC3023                 TopLayer 5.7000mm     38.5500mm    270      "Optoisolator Triac Output 5300Vrms 1 Channel 6-DIP"                                                                 
 U1         STM32F405RGT6           TopLayer 19.3000mm    51.3500mm    270      "High-performance foundation line, ARM Cortex-M4 core with DSP and FPU, 1 Mbyte Flash, 168 MHz CPU, ART Accelerator" 
 R14        "0402 10K"              TopLayer 11.0500mm    45.8500mm    180      Resistor                                                                                                             
@@ -35,7 +36,7 @@ R10        "680 R 0.5w 5%"         TopLayer 29.5500mm    20.0500mm    90       Р
 R9         "200 R 0.5w 5%"         TopLayer 19.4250mm    24.0000mm    270      Резистор                                                                                                             
 R8         "0402 3K"               TopLayer 27.3000mm    44.6000mm    90       Resistor                                                                                                             
 R7         "0402 3K"               TopLayer 30.3000mm    42.7000mm    360      Resistor                                                                                                             
-R6         "0402 10K"              TopLayer 18.9250mm    58.8750mm    180      Resistor                                                                                                             
+R6         "0402 10K"              TopLayer 27.0250mm    51.1000mm    270      Resistor                                                                                                             
 R3         "0402 10 R"             TopLayer 20.7000mm    70.4750mm    270      Resistor                                                                                                             
 R2         "0402 10K"              TopLayer 30.8000mm    53.1500mm    360      Resistor                                                                                                             
 R1         "0402 10 R"             TopLayer 19.1500mm    70.4750mm    270      Resistor                                                                                                             
